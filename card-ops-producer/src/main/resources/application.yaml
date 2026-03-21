@@ -1,0 +1,73 @@
+server:
+  port: ${SERVER_PORT:8085}
+
+spring:
+  application:
+    name: card-ops-producer
+  data:
+    redis:
+      client-type: lettuce
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+kafka:
+    topic: bank.card.replacements.v1
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+    schema-registry-url: ${SCHEMA_REGISTRY_URL:http://localhost:8081}
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health,info,prometheus
+    endpoint:
+        health:
+            show-details: always
+    metrics:
+        tags:
+            application: ${spring.application.name}
+    tracing:             # ✅ trazas habilitadas via Actuator
+        enabled: true
+        sampling:
+            probability: 1.0
+    otlp:                # ✅ nuevo bloque para OpenTelemetry
+        tracing:
+            endpoint: http://otel-collector:4317
+        metrics:
+            export:
+                enabled: true
+
+resilience4j:
+    circuitbreaker:
+        instances:
+            kafkaPublisher:
+                registerHealthIndicator: true
+                slidingWindowSize: 10
+                permittedNumberOfCallsInHalfOpenState: 3
+                minimumNumberOfCalls: 5
+                waitDurationInOpenState: 10s
+                failureRateThreshold: 50
+                eventConsumerBufferSize: 10
+    retry:
+        instances:
+            kafkaPublisher:
+                max-attempts: 3
+                wait-duration: 500ms
+                retry-exceptions:
+                    - org.apache.kafka.common.errors.TimeoutException
+                    - org.springframework.kafka.KafkaException
+
+otel:                  # ⚠️ opcional si usas configuración manual
+  exporter:
+    otlp:
+      endpoint: http://otel-collector:4317
+  resource:
+    attributes:
+      service.name: ${spring.application.name}
+      service.version: 1.0.0
+      deployment.environment: ${ENVIRONMENT:local}
+
+logging:
+  level:
+    root: INFO
+    card.ops.producer: DEBUG
