@@ -24,6 +24,7 @@ public class CardReplacementRequestDto {
     @NotBlank private String correlationId;
     @NotBlank private String status;        // REQUESTED, VALIDATED, etc.
 }
+//Resumen:
 //•	Valida entrada con @NotBlank.
 //•	requestedAt se setea por defecto.
 //•	Lombok (@Data, @Builder) simplifica.
