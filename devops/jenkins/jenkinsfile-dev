@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+	
     environment {
         MAVEN_HOME = tool 'Maven 3.9.11'
         JAVA_HOME = tool 'JDK17'
