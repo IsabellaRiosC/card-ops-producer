@@ -37,10 +37,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-
-
-
 	<repositories>
 		<!-- Maven Central (Resilience4j vive aquí) -->
 		<repository>
