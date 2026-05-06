@@ -11,7 +11,6 @@ import java.time.Instant;
 @AllArgsConstructor
 //Defines cómo se recibe la request REST (CardReplacementRequestDto).
 //Esto es lo que el usuario/cliente del API envía.
-
 public class CardReplacementRequestDto {
     @NotBlank private String requestId;
     @NotBlank private String customerId;
