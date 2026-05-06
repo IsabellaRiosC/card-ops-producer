@@ -9,5 +9,4 @@ public class CardOpsProducerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CardOpsProducerApplication.class, args);
 	}
-
 }
