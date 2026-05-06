@@ -40,7 +40,7 @@ pipeline {
                     //  Crea el primer nivel: /dispatch-consumer
                     checkout([$class: 'GitSCM',
                         branches: [[name: '*/develop']],
-                        userRemoteConfigs: [[url: 'https://github.com/verdugox/dispatch-consumer.git']]
+                        userRemoteConfigs: [[url: 'https://github.com/IsabellaRiosC/dispatch-consumer.git']]
                     ])
                 }
             }
