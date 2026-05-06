@@ -12,7 +12,7 @@
 	<artifactId>card-ops-producer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
-	<description>expone API para pedir reemplazo de tarjeta (producer Avro/Kafka + Redis + RxJava)</description>
+	<description>expone API para pedir reemplazo de tarjeta (producer Avro/Kafka + Redis + RxJava) - Isabela</description>
 
 	<properties>
 		<java.version>17</java.version>
