@@ -43,7 +43,6 @@
 			<releases><enabled>true</enabled></releases>
 			<snapshots><enabled>false</enabled></snapshots>
 		</repository>
-
 		<!-- Confluent (para kafka-avro-serializer) -->
 		<repository>
 			<id>confluent</id>
@@ -70,8 +69,6 @@
 			<snapshots><enabled>false</enabled></snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
-
 	<dependencies>
 
 		<dependency>
