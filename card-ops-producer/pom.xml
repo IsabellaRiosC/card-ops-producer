@@ -350,7 +350,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- Checkstyle plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -384,8 +383,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
-
 </project>
