@@ -266,9 +266,6 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-
-
-
 			<!-- Surefire: pasa el agent a la JVM de tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
