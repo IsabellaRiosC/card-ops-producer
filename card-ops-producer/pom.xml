@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description>expone API para pedir reemplazo de tarjeta (producer Avro/Kafka + Redis + RxJava) - Isabela Rios Cuenca</description>
+
 	<properties>
 		<java.version>17</java.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -24,6 +25,7 @@
 		<argLine/>
 		<jacoco.version>0.8.11</jacoco.version>
 	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -43,6 +45,7 @@
 			<releases><enabled>true</enabled></releases>
 			<snapshots><enabled>false</enabled></snapshots>
 		</repository>
+
 		<!-- Confluent (para kafka-avro-serializer) -->
 		<repository>
 			<id>confluent</id>
@@ -69,6 +72,8 @@
 			<snapshots><enabled>false</enabled></snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+
 	<dependencies>
 
 		<dependency>
@@ -379,7 +384,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 
 		</plugins>
 	</build>
