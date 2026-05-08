@@ -97,7 +97,7 @@ services:
 
   dispatch-consumer:
     build:
-      context: ../dispatch-consumer  #  relativo al docker-compose.yml
+      context: ..\..\..\..\discoproyecto\Repositorio_bootcamp2\dispatch-consumer\dispatch-consumer  #  relativo al docker-compose.yml
       dockerfile: Dockerfile
     image: verdugox/dispatch-consumer:1.0
     depends_on:
