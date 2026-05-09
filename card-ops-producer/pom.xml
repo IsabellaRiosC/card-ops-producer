@@ -310,10 +310,6 @@
 						<configuration>
 							<dataFile>${project.build.directory}/jacoco.exec</dataFile>
 							<outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
-							<reportFormats>
-								<reportFormat>HTML</reportFormat>
-								<reportFormat>XML</reportFormat>
-							</reportFormats>
 							<excludes>
 								<exclude>**/config/**</exclude>
 								<exclude>com/bank/events/**</exclude>
@@ -376,7 +372,6 @@
 							<outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
 							<outputFileFormat>xml</outputFileFormat>
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
-							<logViolationsToConsole>true</logViolationsToConsole> <!--  Muestra todo en logs -->
 						</configuration>
 					</execution>
 					<execution>
