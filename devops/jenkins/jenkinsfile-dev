@@ -51,19 +51,19 @@ pipeline {
                 dir('card-ops-producer') { //  docker-compose.yml está aquí
                     script {
                         echo " Limpiando entorno Docker previo..."
-                        bat """
+                        sh """
                             docker-compose down -v --remove-orphans || exit 0
                             docker container prune -f
                             docker image prune -a -f
                         """
 
                         echo " Construyendo imágenes sin caché..."
-                        bat """
+                        sh """
                             docker-compose build --no-cache
                         """
 
                         echo " Levantando entorno local de dependencias (sin bloqueo del pipeline)..."
-                        bat """
+                        sh """
                             (
                                 docker-compose up -d ^
                                 || echo  Advertencia: Falló el docker-compose up, pero el pipeline continuará.
@@ -85,7 +85,7 @@ pipeline {
             steps {
                 dir('card-ops-producer') {
                     echo " Compilando código con Maven..."
-                    bat """
+                    sh """
                         "${MAVEN_HOME}\\bin\\mvn" clean verify ^
                         -DskipTests=%SKIP_TESTS% ^
                         -Dcheckstyle.failOnViolation=false
@@ -100,7 +100,7 @@ pipeline {
                 dir('card-ops-producer') {
                     withSonarQubeEnv("${SONARQUBE}") {
                         withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
-                            bat """
+                            sh """
                                 "${MAVEN_HOME}\\bin\\mvn" sonar:sonar ^
                                 -Dsonar.projectKey=%SONAR_PROJECT_KEY% ^
                                 -Dsonar.host.url=%SONAR_URL% ^
@@ -122,13 +122,13 @@ pipeline {
             steps {
                 dir('card-ops-producer') {
                     echo " Construyendo imagen Docker local..."
-                    bat "docker build -t %DOCKER_IMAGE% ."
+                    sh "docker build -t %DOCKER_IMAGE% ."
                 }
                 echo " Subiendo imagen a DockerHub..."
                 withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}",
                                                  usernameVariable: 'DOCKER_USER',
                                                  passwordVariable: 'DOCKER_PASS')]) {
-                    bat """
+                    sh """
                         docker login -u %DOCKER_USER% -p %DOCKER_PASS%
                         docker push %DOCKER_IMAGE%
                     """
