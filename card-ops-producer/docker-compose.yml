@@ -231,7 +231,6 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     restart: unless-stopped
 
-
   apm-server:
     image: docker.elastic.co/apm/apm-server:8.15.0
     depends_on:

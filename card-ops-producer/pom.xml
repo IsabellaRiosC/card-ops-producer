@@ -353,7 +353,13 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>3.3.1</version>
 				<configuration>
-					<failOnViolation>false</failOnViolation>
+					<failOnViolation>true</failOnViolation>
+					<includes>
+						<include>src/main/java/**/*.java</include>
+					</includes>
+					<excludes>
+						<exclude>target/generated-sources/**</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>
