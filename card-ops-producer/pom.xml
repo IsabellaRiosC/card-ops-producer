@@ -280,6 +280,7 @@
 					<reuseForks>true</reuseForks>
 				</configuration>
 			</plugin>
+
 			<!-- SonarQube Scanner Plugin -->
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
