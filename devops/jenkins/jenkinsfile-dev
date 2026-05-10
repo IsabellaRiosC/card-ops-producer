@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
     environment {
-        MAVEN_HOME = tool 'apache-maven-3.9.11'
+        MAVEN_HOME = tool 'Maven 3.9.11'
         JAVA_HOME = tool 'JDK17'
         DEPLOY_ENV = "dev"
         CONFIG_FILE = "devops/deploy/dev-vars.yaml"
